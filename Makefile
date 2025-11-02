@@ -4,7 +4,10 @@ TYPE = ps-exe
 SRCS = \
 third_party/nugget/common/crt0/crt0.s \
 main.c \
-libs/print.c
+box.c \
+libs/constants.c \
+libs/print.c \
+libs/controller.c
 
 CPPFLAGS += -Ithird_party/psyq-iwyu/include
 LDFLAGS += -Lthird_party/psyq/lib

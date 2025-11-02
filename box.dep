@@ -1,7 +1,6 @@
-main.o: main.c third_party/psyq-iwyu/include/libetc.h \
+box.o: box.c third_party/psyq-iwyu/include/libgte.h \
  third_party/psyq-iwyu/include/types.h \
- third_party/psyq-iwyu/include/libgpu.h \
- third_party/psyq-iwyu/include/libgte.h \
+ third_party/psyq-iwyu/include/libgpu.h box.h libs/constants.h \
  third_party/psyq-iwyu/include/stdlib.h \
  third_party/psyq-iwyu/include/stddef.h \
  third_party/psyq-iwyu/include/abs.h \
@@ -9,5 +8,6 @@ main.o: main.c third_party/psyq-iwyu/include/libetc.h \
  third_party/psyq-iwyu/include/malloc.h \
  third_party/psyq-iwyu/include/qsort.h \
  third_party/psyq-iwyu/include/rand.h \
- third_party/psyq-iwyu/include/libgs.h libs/controller.h libs/constants.h \
- third_party/psyq-iwyu/include/sys/types.h libs/print.h box.h
+ third_party/psyq-iwyu/include/libgs.h \
+ third_party/psyq-iwyu/include/libetc.h \
+ third_party/psyq-iwyu/include/sys/types.h libs/controller.h

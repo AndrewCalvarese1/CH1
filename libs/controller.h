@@ -8,9 +8,21 @@
 #include <stdlib.h>
 
 #pragma once
+#include <libetc.h>
 
-int	SysPad, SysPadT;
-#define	padCheck(_p_)	(SysPad & (_p_))
+// Extern globals (adjust to what you actually had in the header)
+extern unsigned long pad_raw[2];      // raw pad data
+extern unsigned long pad_pressed[2];  // edge (pressed this frame)
+extern unsigned long pad_released[2]; // edge (released this frame)
+
+// Button query helpers
+void initializePad(void);
+void padUpdate(void);
+int  padCheck(unsigned long button);   // returns non-zero if button currently down
+int  padPressed(unsigned long button); // pressed this frame
+int  padReleased(unsigned long button);// released this frame
+
+#define	padCheckRaw(_p_)	(SysPad & (_p_))//added "raw"
 #define	padCheckPressed(_p_)	(SysPadT & (_p_))
 #define Pad1Up			_PAD(0, PADLup)
 #define Pad1Down		_PAD(0, PADLdown)
@@ -40,18 +52,3 @@ int	SysPad, SysPadT;
 #define Pad2R2			_PAD(1, PADR2)
 #define Pad2Start		_PAD(1, PADstart)
 #define Pad2Select		_PAD(1, PADselect)
-
-void initializePad() {
-	PadInit(0);
-}
-
-void padReset(void) {
-	SysPad = 0;
-	SysPadT = 0;
-}
-
-void padUpdate(void){
-	int	pad = PadRead(0);
-	SysPadT = pad & (pad ^ SysPad);
-	SysPad = pad;
-}
